@@ -1,7 +1,679 @@
 <!DOCTYPE html>
-<html>
-    <body>
-      <h1>Hello World</h1>
-            <p>I'm hosted with GitHub Pages.</p>
-     </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>William Zhang - Software Developer</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/material-components-web/14.0.0/material-components-web.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #3b75eb;
+            --secondary-color: #60A5FA;
+            --background-color: #0A1929;
+            --card-background: #132F4C;
+            --text-color: #ffffff;
+            --panel-width: 300px;
+            --transition-speed: 0.3s;
+        }
+
+        [data-theme="light"] {
+            --background-color: #F3F4F6;
+            --card-background: #FFFFFF;
+            --text-color: #1F2937;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Oxygen, sans-serif;
+            line-height: 1.6;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            display: flex;
+            min-height: 100vh;
+            transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+        }
+
+        /* Side Panel Styles */
+        .side-panel {
+            width: var(--panel-width);
+            background-color: var(--card-background);
+            position: fixed;
+            height: 100vh;
+            padding: 2rem;
+            box-shadow: 2px 0 4px rgba(0,0,0,0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            text-align: center;
+            z-index: 10;
+            transition: background-color var(--transition-speed) ease;
+        }
+
+        .profile-pic {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 1rem auto;
+            display: block;
+            object-fit: cover;
+            border: 3px solid var(--primary-color);
+            transition: transform var(--transition-speed) ease;
+        }
+
+        .profile-pic:hover {
+            transform: scale(1.05);
+        }
+
+        .name {
+            font-size: 2rem;
+            margin: 1rem 0;
+            color: var(--text-color);
+            transition: color var(--transition-speed) ease, opacity var(--transition-speed) ease;
+        }
+
+        .title {
+            color: #B2BAC2;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            transition: color var(--transition-speed) ease, opacity var(--transition-speed) ease;
+        }
+
+        .social-links {
+            margin-top: 1rem;
+            width: 100%;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            color: var(--secondary-color);
+            text-decoration: none;
+            margin: 1rem 0;
+            font-weight: bold;
+            gap: 0.75rem;
+            transition: color var(--transition-speed) ease;
+        }
+
+        .social-link:hover {
+            color: var(--primary-color);
+        }
+
+        .social-icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            position: absolute;
+            bottom: 2rem;
+            left: 2rem;
+            background: none;
+            border: none;
+            color: var(--text-color);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            transition: color var(--transition-speed) ease;
+        }
+
+        .theme-toggle:hover {
+            color: var(--primary-color); 
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            margin-left: var(--panel-width);
+            flex-grow: 1;
+            padding: 2rem;
+            max-width: calc(100% - var(--panel-width));
+        }
+
+        /* Tab Navigation Styles */
+        .tabs {
+            display: flex;
+            margin-bottom: 2rem;
+            background: var(--card-background);
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 2;
+            transition: background-color var(--transition-speed) ease;
+        }
+
+        .tab {
+            padding: 1rem 2rem;
+            cursor: pointer;
+            color: #B2BAC2;
+            position: relative;
+            transition: all var(--transition-speed) ease;
+            border-radius: 4px;
+            user-select: none;
+        }
+
+        .tab:hover {
+            background-color: rgba(109, 150, 232, 0.1);
+            color: var(--text-color);
+        }
+
+        .tab.active {
+            color: var(--text-color);
+            background-color: rgba(14, 58, 237, 0.2);
+        }
+
+        /* Section Content Styles */
+        .section {
+            position: absolute;
+            width: 100%;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: opacity var(--transition-speed) ease,
+                        transform var(--transition-speed) ease,
+                        visibility 0s linear var(--transition-speed);
+        }
+
+        .section.active {
+            position: relative;
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            transition: opacity var(--transition-speed) ease,
+                        transform var(--transition-speed) ease,
+                        visibility 0s linear;
+        }
+
+        /* Other styles remain the same... */
+        .section h2 {
+            color: var(--text-color); /* Dynamic text color change */
+            margin-bottom: 2rem;
+            font-size: 2.2rem;
+            opacity: 1; /* Ensure it's visible initially */
+            transition: color var(--transition-speed) ease, opacity var(--transition-speed) ease;
+        }
+
+        h3 {
+            margin-bottom: 1rem; /* Added for better spacing */
+            line-height: 1.3; /* Added for better readability */
+            transition: background-color var(--transition-speed) ease;
+        }
+
+        p {
+            margin-top: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin: 1rem 0;
+        }
+
+        /* Skill tags */
+        .skill-tag {
+            background-color: rgba(109, 150, 232, 0.2); /* Initial background */
+            color: var(--text-color); /* Initial text color */
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all var(--transition-speed) ease; /* Smooth transition */
+        }
+
+        /* Hover effect for skills */
+        .skill-tag:hover {
+            background-color: var(--primary-color); /* Change background on hover */
+            color: #fff; /* Change text color on hover */
+        }
+
+        .project-card {
+            background-color: var(--card-background);
+            padding: 1.8rem;
+            margin-bottom: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            transition: all var(--transition-speed) ease; /* Smooth transition */
+        }
+
+        /* Hover effect for experience items */
+        .project-card:hover {
+            background-color: rgba(59, 117, 235, 0.4); /* Change background on hover */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Enhance shadow on hover */
+            transform: translateY(-5px); /* Slight lift on hover */
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .project-date {
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+        }
+
+        .project-description {
+            margin-bottom: 1rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .project-tag {
+            background-color: rgba(109, 150, 232, 0.2);
+            color: var(--text-color);
+            padding: 0.4rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+        }
+
+        /* Experience items */
+        .experience-item {
+            background-color: var(--card-background); /* Initial background */
+            padding: 1.8rem;
+            margin-bottom: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Initial box shadow */
+            transition: all var(--transition-speed) ease; /* Smooth transition */
+        }
+
+        /* Hover effect for experience items */
+        .experience-item:hover {
+            background-color: rgba(59, 117, 235, 0.4); /* Change background on hover */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Enhance shadow on hover */
+            transform: translateY(-5px); /* Slight lift on hover */
+        }
+
+        .experience-header {
+            margin-bottom: 1rem;
+        }
+
+        .experience-details {
+            margin-bottom: 1rem;
+        }
+
+        .experience-bullets {
+            list-style-type: none;
+        }
+
+        .experience-bullets li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .experience-bullets li::before {
+            content: "•";
+            color: var(--secondary-color);
+            position: absolute;
+            left: 0;
+        }
+
+        .education {
+            background-color: var(--card-background);
+            padding: 1.8rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            margin-top: 2rem;
+            transition: background-color var(--transition-speed) ease;
+        }
+
+        .education p {
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+            .side-panel {
+                width: 100%;
+                height: auto;
+                position: relative;
+                padding: 1rem;
+            }
+            .main-content {
+                margin-left: 0;
+                padding: 1rem;
+                max-width: 100%;
+            }
+            .tabs {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .tab {
+                padding: 0.8rem 1.5rem;
+                margin: 0.25rem;
+            }
+            .section {
+                position: relative;
+                width: 100%;
+            }
+            @media (max-width: 768px) {
+            .theme-toggle {
+                position: static;
+                margin-top: 1rem;
+                justify-content: center;
+            }
+        }
+        }
+
+    </style>
+</head>
+<body>
+    <aside class="side-panel">
+        <img src="https://ca.slack-edge.com/T06S4KHQYCT-U06STHA3ZJL-924ed5973c5e-512" alt="William Zhang" class="profile-pic">
+        <h1 class="name">William Zhang</h1>
+        <p class="title">Software Developer</p>
+        <div class="social-links">
+            <a href="mailto:willzhang@utexas.edu" class="social-link">
+                <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                    <polyline points="22,6 12,13 2,6"/>
+                </svg>
+                willzhang@utexas.edu
+            </a>
+            <a href="https://github.com/phytal" target="_blank" class="social-link">
+                <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                </svg>
+                github.com/phytal
+            </a>
+            <a href="https://linkedin.com/in/wzhxng" target="_blank" class="social-link">
+                <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                    <rect x="2" y="9" width="4" height="12"/>
+                    <circle cx="4" cy="4" r="2"/>
+                </svg>
+                linkedin.com/in/wzhxng
+            </a>
+            <div class="social-link">
+                <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+                (469) 703-0568
+            </div>
+        </div>
+        <button class="theme-toggle">
+            <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="5"/>
+                <line x1="12" y1="1" x2="12" y2="3"/>
+                <line x1="12" y1="21" x2="12" y2="23"/>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                <line x1="1" y1="12" x2="3" y2="12"/>
+                <line x1="21" y1="12" x2="23" y2="12"/>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+            </svg>
+
+        </button>
+    </aside>
+
+    <main class="main-content">
+        <nav class="tabs">
+            <div class="tab active" data-tab="about">About</div>
+            <div class="tab" data-tab="projects">Projects</div>
+            <div class="tab" data-tab="experience">Experience</div>
+        </nav>
+
+        <div class="content-container">
+            <section id="about" class="section active">
+                <h2>About Me</h2>
+                <p>Pursuing a dual degree in Computer Science Honors and Business Administration at UT Austin. AWS Certified Cloud Practitioner with experience in full-stack development, machine learning, and financial technology.</p>
+                
+                <div class="skills-section">
+                    <h3>Development Languages</h3>
+                    <div class="skills-list">
+                        <span class="skill-tag">C</span>
+                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">C#/ASP.NET</span>
+                        <span class="skill-tag">HTML/CSS</span>
+                        <span class="skill-tag">JavaScript/TypeScript</span>
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">Kotlin</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">R</span>
+                        <span class="skill-tag">SQL</span>
+                    </div>
+                </div>
+
+
+                <h3>Development Tools</h3>
+                <div class="skills-list">
+                    <span class="skill-tag">Android</span>
+                    <span class="skill-tag">AWS</span>
+                    <span class="skill-tag">Docker</span>
+                    <span class="skill-tag">Firebase</span>
+                    <span class="skill-tag">Git/GitHub</span>
+                    <span class="skill-tag">LangChain</span>
+                    <span class="skill-tag">MongoDB</span>
+                    <span class="skill-tag">React</span>
+                    <span class="skill-tag">Sklearn</span>
+                    <span class="skill-tag">Swagger</span>
+                </div>
+
+                <h3>Business Tools</h3>
+                <div class="skills-list">
+                    <span class="skill-tag">Confluence</span>
+                    <span class="skill-tag">Google Suite</span>
+                    <span class="skill-tag">MS Office</span>
+                    <span class="skill-tag">Jira</span>
+                    <span class="skill-tag">Slack</span>
+                </div>
+
+                <div class="education">
+                    <h3>Education</h3>
+                    <p>The University of Texas at Austin</p>
+                    <p>B.S. Computer Science Honors & BBA Business Honors</p>
+                    <p>Expected Graduation: May 2026</p>
+                </div>
+            </section>
+
+             <section id="projects" class="section">
+                <h2>Projects</h2>
+                
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Fynopsis.ai Financial Analysis Platform</h3>
+                        <span class="project-date">Spring 2024 - Present</span>
+                    </div>
+                    <div class="project-description">
+                        <p>Founded and launched B2B SaaS platform automating comprehensive company histories and industry insights using advanced AI techniques. Designed a multi-agent system achieving 100% hallucination-free responses and embedded over 1M+ data points.</p>
+                    </div>
+                    <div class="project-tags">
+                        <span class="project-tag">LangChain</span>
+                        <span class="project-tag">AWS</span>
+                        <span class="project-tag">Docker</span>
+                        <span class="project-tag">GitHub Actions</span>
+                        <span class="project-tag">LangGraph</span>
+                        <span class="project-tag">Vector DB</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Dual-Issue x64 CPU</h3>
+                        <span class="project-date">Spring 2024</span>
+                    </div>
+                    <div class="project-description">
+                        <p>Developed a complete 64-bit processor implementation including assemblers, simulators, and dual-issue pipeline design with support for 143 different instructions.</p>
+                    </div>
+                    <div class="project-tags">
+                        <span class="project-tag">C</span>
+                        <span class="project-tag">SystemVerilog</span>
+                        <span class="project-tag">Assembly</span>
+                        <span class="project-tag">Computer Architecture</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Dynamic Memory Allocator</h3>
+                        <span class="project-date">Spring 2024</span>
+                    </div>
+                    <div class="project-description">
+                        <p>Implemented multiple memory allocation strategies and a mark-and-sweep garbage collector, with comprehensive performance analysis across 50,000+ data points.</p>
+                    </div>
+                    <div class="project-tags">
+                        <span class="project-tag">C</span>
+                        <span class="project-tag">Memory Management</span>
+                        <span class="project-tag">Systems Programming</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Algorithmic Trading Strategy</h3>
+                        <span class="project-date">Winter 2023</span>
+                    </div>
+                    <div class="project-description">
+                        <p>Developed unsupervised learning approach to portfolio management, achieving 20% YOY alpha through k-means clustering on S&P 500 volatility indicators.</p>
+                    </div>
+                    <div class="project-tags">
+                        <span class="project-tag">Python</span>
+                        <span class="project-tag">Pandas</span>
+                        <span class="project-tag">Machine Learning</span>
+                        <span class="project-tag">Financial Analysis</span>
+                        <span class="project-tag">Sklearn</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>SimpleGrade Android App</h3>
+                        <span class="project-date">Spring 2021 - Fall 2022</span>
+                    </div>
+                    <div class="project-description">
+                        <p>Built an Android app using Kotlin to retrieve, store, and display student grades from PowerSchool's HomeAccessCenter, with integrated Flask API for improved efficiency.</p>
+                    </div>
+                    <div class="project-tags">
+                        <span class="project-tag">Kotlin</span>
+                        <span class="project-tag">Android</span>
+                        <span class="project-tag">Flask</span>
+                        <span class="project-tag">Material Design</span>
+                        <span class="project-tag">Python</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Wsashi Discord Chatbot</h3>
+                        <span class="project-date">Spring 2018 - Spring 2019</span>
+                    </div>
+                    <div class="project-description">
+                        <p>Developed a versatile Discord bot serving 50,000+ users across 3,000+ servers, featuring multiplayer games and moderation tools.</p>
+                    </div>
+                    <div class="project-tags">
+                        <span class="project-tag">C#</span>
+                        <span class="project-tag">ASP.NET</span>
+                        <span class="project-tag">Discord API</span>
+                    </div>
+                </div>
+            </section>
+
+            <section id="experience" class="section">
+              <h2>Experience</h2>
+              <div class="experience-item">
+                  <div class="experience-header">
+                      <h3>Software Development Intern</h3>
+                      <p class="company">LPL Financial - Austin, TX</p>
+                      <p class="date">June 2024 - August 2024</p>
+                  </div>
+                  <ul class="experience-bullets">
+                      <li>Drove $22M in cost savings by spearheading the design and development of standardized logging for 500+ enterprise applications</li>
+                      <li>Established data pipelines to Confluent Cloud with AWS API Gateway and Lambda, reducing processing times by 20%</li>
+                      <li>Engineered scalable RESTful APIs capable of handling 1,000+ requests/second</li>
+                      <li>Automated API endpoint deployment to AWS with Terraform IaC, cutting time-to-production by 35%</li>
+                  </ul>
+              </div>
+
+              <div class="experience-item">
+                  <div class="experience-header">
+                      <h3>Computer Science Tutor</h3>
+                      <p class="company">Freelance - Austin, TX</p>
+                      <p class="date">January 2024 - Present</p>
+                  </div>
+                  <ul class="experience-bullets">
+                      <li>Facilitated one-on-one Java tutoring sessions, covering advanced topics like object-oriented programming, data structures, and algorithms</li>
+                      <li>Achieved 40% increase in student exam scores through targeted academic support</li>
+                  </ul>
+              </div>
+          </section>
+        </div>
+    </main>
+
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Existing tab switching logic
+            const tabs = document.querySelectorAll('.tab');
+            const sections = document.querySelectorAll('.section');
+
+            function switchTab(tabId) {
+                tabs.forEach(t => t.classList.remove('active'));
+                sections.forEach(s => s.classList.remove('active'));
+
+                const selectedTab = document.querySelector(`[data-tab="${tabId}"]`);
+                const selectedSection = document.getElementById(tabId);
+                
+                if (selectedTab && selectedSection) {
+                    selectedTab.classList.add('active');
+                    selectedSection.classList.add('active');
+                }
+            }
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', (e) => {
+                    const tabId = tab.getAttribute('data-tab');
+                    switchTab(tabId);
+                });
+            });
+
+            // Theme toggle logic
+            const themeToggle = document.querySelector('.theme-toggle');
+            const themeIcon = themeToggle.querySelector('svg');
+            let isDark = true;
+
+            themeToggle.addEventListener('click', () => {
+                isDark = !isDark;
+                document.body.setAttribute('data-theme', isDark ? 'dark' : 'light');
+                
+                // Update icon
+                if (isDark) {
+                    themeIcon.innerHTML = `
+                        <circle cx="12" cy="12" r="5"/>
+                        <line x1="12" y1="1" x2="12" y2="3"/>
+                        <line x1="12" y1="21" x2="12" y2="23"/>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                        <line x1="1" y1="12" x2="3" y2="12"/>
+                        <line x1="21" y1="12" x2="23" y2="12"/>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                    `;
+                } else {
+                    themeIcon.innerHTML = `
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    `;
+                }
+            });
+        });
+    </script>
+</body>
 </html>
+
+
