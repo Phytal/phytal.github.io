@@ -317,11 +317,25 @@
         }
 
         .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
             margin-bottom: 1rem;
         }
 
         .experience-details {
-            margin-bottom: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .company {
+            color: var(--secondary-color);
+            font-size: 1rem;
+            margin-top: 0;
+        }
+
+        .experience-date {
+            color: var(--secondary-color);
+            font-size: 0.9rem;
         }
 
         .experience-bullets {
@@ -682,24 +696,28 @@
             <section id="experience" class="section">
               <h2>Experience</h2>
               <div class="experience-item">
-                  <div class="experience-header">
-                      <h3>Software Development Intern</h3>
-                      <p class="company">LPL Financial - Austin, TX</p>
-                      <p class="date">June 2024 - August 2024</p>
-                  </div>
-                  <ul class="experience-bullets">
-                      <li>Drove $22M in cost savings by spearheading the design and development of standardized logging for 500+ enterprise applications</li>
-                      <li>Established data pipelines to Confluent Cloud with AWS API Gateway and Lambda, reducing processing times by 20%</li>
-                      <li>Engineered scalable RESTful APIs capable of handling 1,000+ requests/second</li>
-                      <li>Automated API endpoint deployment to AWS with Terraform IaC, cutting time-to-production by 35%</li>
-                  </ul>
-              </div>
+                <div class="experience-header">
+                    <div class="experience-details">
+                        <h3>Software Development Intern</h3>
+                        <p class="company">LPL Financial - Austin, TX</p>
+                    </div>
+                    <span class="experience-date">June 2024 - August 2024</span>
+                </div>
+                <ul class="experience-bullets">
+                    <li>Drove $22M in cost savings by spearheading the design and development of standardized logging for 500+ enterprise applications</li>
+                    <li>Established data pipelines to Confluent Cloud with AWS API Gateway and Lambda, reducing processing times by 20%</li>
+                    <li>Engineered scalable RESTful APIs capable of handling 1,000+ requests/second</li>
+                    <li>Automated API endpoint deployment to AWS with Terraform IaC, cutting time-to-production by 35%</li>
+                </ul>
+            </div>
 
               <div class="experience-item">
                   <div class="experience-header">
-                      <h3>Computer Science Tutor</h3>
-                      <p class="company">Freelance - Austin, TX</p>
-                      <p class="date">January 2024 - Present</p>
+                      <div class="experience-details">
+                          <h3>Computer Science Tutor</h3>
+                          <p class="company">Freelance - Austin, TX</p>
+                      </div>
+                      <span class="experience-date">January 2024 - Present</p>
                   </div>
                   <ul class="experience-bullets">
                       <li>Facilitated one-on-one Java tutoring sessions, covering advanced topics like object-oriented programming, data structures, and algorithms</li>
