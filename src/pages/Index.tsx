@@ -167,17 +167,17 @@ const Index = () => {
 
           <div className="p-8 space-y-16">
             <div id="about" ref={aboutRef} className="scroll-mt-24">
-              <h2 className="text-3xl font-bold mb-6">About</h2>
+              <h2 className="text-3xl font-bold mb-6">about</h2>
               <AboutSection />
             </div>
 
             <div id="experience" ref={experienceRef} className="scroll-mt-24">
-              <h2 className="text-3xl font-bold mb-6">Experience</h2>
+              <h2 className="text-3xl font-bold mb-6">experience</h2>
               <ExperienceSection />
             </div>
 
             <div id="projects" ref={projectsRef} className="scroll-mt-24">
-              <h2 className="text-3xl font-bold mb-6">Projects</h2>
+              <h2 className="text-3xl font-bold mb-6">projects</h2>
               <div className="space-y-6">
                 {projects.map((project, index) => (
                   <ProjectCard key={index} {...project} />
@@ -186,11 +186,11 @@ const Index = () => {
             </div>
 
             <div id="skills" ref={skillsRef} className="scroll-mt-24">
-              <h2 className="text-3xl font-bold mb-6">Skills</h2>
+              <h2 className="text-3xl font-bold mb-6">skills</h2>
               <div className="space-y-8">
-                <SkillsSection title="Development Languages" skills={skills.developmentLanguages} />
-                <SkillsSection title="Development Frameworks" skills={skills.developmentFrameworks} />
-                <SkillsSection title="Business Tools" skills={skills.businessTools} />
+                <SkillsSection title="development languages" skills={skills.developmentLanguages} />
+                <SkillsSection title="development frameworks" skills={skills.developmentFrameworks} />
+                <SkillsSection title="business tools" skills={skills.businessTools} />
               </div>
             </div>
           </div>

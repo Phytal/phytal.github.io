@@ -45,7 +45,7 @@ const ExperienceSection = () => {
           key={index}
           whileHover={{ scale: 1.01 }}
           transition={{ duration: 0.3 }}
-          className="p-6 rounded-lg bg-card shadow-md hover:shadow-lg hover:shadow-primary/20"
+          className="p-6 rounded-lg bg-card shadow-md hover:shadow-lg hover:shadow-primary/20 transition-colors duration-300"
         >
           <div className="flex justify-between items-start mb-4">
             <div>

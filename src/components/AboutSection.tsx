@@ -8,10 +8,11 @@ const AboutSection = () => {
       exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.5 }}
     >
-      <p className="mb-8">
-        Pursuing a dual degree in Computer Science Honors and Business Administration at UT Austin. 
-        AWS Certified Cloud Practitioner with experience in full-stack development, machine learning, and financial technology.
-      </p>
+      <ul className="mb-8 list-disc list-inside">
+        <li>coding since the fifth grade.</li>
+        <li>experience in low-level systems, machine learning, and full-stack.</li>
+        <li>building <a href="https://fynopsis.ai" target="_blank" rel="noopener noreferrer">fynopsis.ai</a></li>
+      </ul>
     </motion.div>
   );
 };
