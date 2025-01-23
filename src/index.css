@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 95%;  /* #F3F4F6 */
+    --foreground: 222 47% 11%;  /* #1F2937 */
+
+    --card: 0 0% 100%;  /* #FFFFFF */
+    --card-foreground: 222 47% 11%;  /* #1F2937 */
+
+    --primary: 221 80% 58%;  /* #3b75eb */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 217 91% 67%;  /* #60A5FA */
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 221 80% 58%;  /* Using primary color #3b75eb */
+    --accent-foreground: 0 0% 100%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221 80% 58%;  /* Using primary color #3b75eb */
+
+    --radius: 0.5rem;
+
+    --panel-width: 300px;
+    --transition-speed: 0.3s;
+  }
+
+  .dark {
+    --background: 212 47% 10%;  /* #0A1929 */
+    --foreground: 0 0% 100%;  /* #ffffff */
+
+    --card: 210 58% 19%;  /* #132F4C */
+    --card-foreground: 0 0% 100%;  /* #ffffff */
+
+    --primary: 221 80% 58%;  /* #3b75eb */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 217 91% 67%;  /* #60A5FA */
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 221 80% 58%;  /* Using primary color #3b75eb */
+    --accent-foreground: 0 0% 100%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 221 80% 58%;  /* Using primary color #3b75eb */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
