@@ -23,72 +23,79 @@ const skills = {
 const projects = [
   {
     title: "Fynopsis.ai Document Management Platform",
-    description: "Founded first AI-native virtual data room platform for M&A, built with Vector + GraphRAG, custom hybrid chunking, and multi-agent systems. Won Meta Llama Impact Hackathon.",
-    date: "Spring 2024 - Present",
+    description: "Founded first AI-native virtual data room platform for M&A, built with Vector + GraphRAG, custom hybrid chunking, and multi-agent systems.",
+    date: "Summer 2024 - Present",
     link: "https://fynopsis.ai",
     tags: ["LangGraph", "Vector DB", "AWS", "Docker", "OCR", "Multi-Agent Systems"]
   },
   {
+    title: "SimpliFill Form Automation",
+    description: "Won 1st place at Austin's Meta Llama Impact Hackathon. Built AI multilingual form-filling platform for non-native speakers.",
+    date: "Winter 2024",
+    link: "https://github.com/phytal/simplifill",
+    tags: ["Llama", "Groq", "LangGraph", "Qdrant", "AWS"]
+  },
+  {
     title: "Financial Analysis Platform",
     description: "B2B SaaS platform automating company histories and industry insights using multi-agent systems and RAG framework.",
-    date: "Spring 2024 - Present",
-    link: "https://github.com/username/financial-analysis",
+    date: "Spring 2024 - Summer 2024",
+    link: "https://github.com/phytal/financial-analysis",
     tags: ["AWS", "Docker", "LangGraph", "Vector DB", "CI/CD"]
   },
   {
     title: "Raspberry Pi and x86-64 Kernel",
     description: "Built custom bare-metal OS with threading, preemption, and EXT2 file system. Implemented virtual memory and garbage collection.",
     date: "Fall 2024",
-    link: "https://github.com/username/kernel",
+    link: "https://github.com/phytal/rpi-os",
     tags: ["C", "ARM Assembly", "OS Development", "Memory Management"]
   },
   {
     title: "Dual-Issue x64 CPU",
     description: "Developed 64-bit processor implementation including assemblers, simulators, and dual-issue pipeline design supporting 143 instructions.",
     date: "Spring 2024",
-    link: "https://github.com/username/cpu",
+    link: "https://github.com/phytal/cpu",
     tags: ["SystemVerilog", "C", "Assembly", "Computer Architecture"]
   },
   {
     title: "Dynamic Memory Allocator",
     description: "Implemented memory allocation strategies and mark-and-sweep garbage collector in C, analyzing runtime efficiency.",
     date: "Spring 2024",
-    link: "https://github.com/username/memory-allocator",
+    link: "https://github.com/phytal/C-Memory-Manager",
     tags: ["C", "Memory Management", "Data Analysis"]
   },
   {
     title: "Unsupervised Trading Strategy",
     description: "Applied k-means clustering on S&P 500 volatility indicators, achieving 20% YOY alpha with risk management.",
     date: "Winter 2023",
-    link: "https://github.com/username/trading-strategy",
-    tags: ["Python", "Machine Learning", "Financial Analysis"]
+    link: "https://github.com/phytal/algorithmic-trading-python",
+    tags: ["Python", "Machine Learning", "Quantitative Analysis"]
   },
   {
     title: "Tetris Game AI",
     description: "Implemented Tetris simulator with genetic algorithm optimization and comprehensive testing.",
     date: "Fall 2023",
-    link: "https://github.com/username/tetris-ai",
+    link: "https://github.com/phytal/tetris",
     tags: ["Java", "Genetic Algorithms", "JUnit"]
-  },
-  {
-    title: "HomeAccessCenter API",
-    description: "Open-source web API for PowerSchool's HomeAccessCenter with secure session handling.",
-    date: "Spring 2020 - Fall 2020",
-    link: "https://github.com/username/hac-api",
-    tags: ["C#", "ASP.NET", "HTTP", "API Development"]
   },
   {
     title: "SimpleGrade Android App",
     description: "Android app for PowerSchool grade retrieval with Flask backend and Material Design UI.",
     date: "Spring 2021 - Fall 2022",
-    link: "https://github.com/username/simplegrade",
+    link: "https://github.com/phytal/Sarona",
     tags: ["Kotlin", "Android", "Python", "Flask"]
+  },
+  {
+    title: "HomeAccessCenter API",
+    description: "Open-source web API for PowerSchool's HomeAccessCenter with secure session handling.",
+    date: "Spring 2020 - Fall 2020",
+    link: "https://github.com/phytal/HomeAccessCenter-Web-API",
+    tags: ["C#", "ASP.NET", "HTTP", "API Development"]
   },
   {
     title: "Wsashi Discord Chatbot",
     description: "Discord bot serving 50,000+ users across 3,000+ servers with multiplayer games and moderation tools.",
     date: "Spring 2018 - Spring 2019",
-    link: "https://github.com/username/wsashi",
+    link: "https://github.com/phytal/wsashi",
     tags: ["C#", "Discord API", "Game Development"]
   }
 ];

@@ -2,15 +2,15 @@ import { motion } from "framer-motion";
 
 const experiences = [
   {
-    title: "Software Development Intern",
+    title: "Software Engineer Intern",
     company: "Amazon - Seattle, WA",
     date: "May 2025 - August 2025",
     bullets: [
-      "Incoming Software Development Intern"
+      "Incoming summer intern on Amazon Entertainment"
     ]
   },
   {
-    title: "Software Development Intern",
+    title: "Software Engineer Intern",
     company: "LPL Financial - Austin, TX",
     date: "June 2024 - August 2024",
     bullets: [

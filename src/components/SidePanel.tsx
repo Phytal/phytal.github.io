@@ -1,6 +1,6 @@
 import { Avatar } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { Mail, Github, Linkedin, Phone, Sun, Moon, Twitter } from "lucide-react";
+import { Mail, Github, Linkedin, Phone, Sun, Moon } from "lucide-react";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 
