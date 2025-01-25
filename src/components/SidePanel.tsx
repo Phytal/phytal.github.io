@@ -19,7 +19,7 @@ const SidePanel = ({ theme, toggleTheme }: SidePanelProps) => {
       <div className="flex flex-col items-center">
         <Avatar className="w-48 h-48 mb-4">
           <img 
-            src="https://ca.slack-edge.com/T06S4KHQYCT-U06STHA3ZJL-924ed5973c5e-512" 
+            src="https://pbs.twimg.com/profile_images/1883020457663754240/hAiam8Tm_400x400.jpg" 
             alt="William Zhang"
             className="w-full h-full object-cover rounded-full"
           />
